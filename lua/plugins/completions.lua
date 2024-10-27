@@ -1,15 +1,22 @@
+
+
 return {
 	{
 		"hrsh7th/cmp-nvim-lsp",
 	},
-  {
-    "hrsh7th/cmp-buffer",
-  },
-  {
-    "hrsh7th/cmp-cmdline",
-  },
 	{
-		"github/copilot.vim",
+		"hrsh7th/cmp-buffer",
+	},
+	{
+		"hrsh7th/cmp-cmdline",
+	},
+	{
+		"zbirenbaum/copilot.lua",
+		cmd = "Copilot",
+		event = "InsertEnter",
+		config = function()
+			require("copilot").setup({})
+		end,
 	},
 	{
 		"L3MON4D3/LuaSnip",
@@ -19,10 +26,20 @@ return {
 		},
 	},
 	{
+		"zbirenbaum/copilot-cmp",
+		config = function()
+			require("copilot_cmp").setup()
+		end,
+	},
+  {
+    "onsails/lspkind.nvim"
+  },
+	{
 		"hrsh7th/nvim-cmp",
 		config = function()
 			-- Set up nvim-cmp.
 			local cmp = require("cmp")
+      local lspkind = require('lspkind')
 			require("luasnip.loaders.from_vscode").lazy_load()
 			cmp.setup({
 				snippet = {
@@ -39,6 +56,13 @@ return {
 					completion = cmp.config.window.bordered(),
 					documentation = cmp.config.window.bordered(),
 				},
+				formatting = {
+					format = lspkind.cmp_format({
+						mode = "symbol",
+						max_width = 50,
+						symbol_map = { Copilot = "" },
+					}),
+				},
 				mapping = cmp.mapping.preset.insert({
 					["<C-b>"] = cmp.mapping.scroll_docs(-4),
 					["<C-f>"] = cmp.mapping.scroll_docs(4),
@@ -52,6 +76,7 @@ return {
 					{ name = "luasnip" }, -- For luasnip users.
 					-- { name = 'ultisnips' }, -- For ultisnips users.
 					-- { name = 'snippy' }, -- For snippy users.
+					{ name = "copilot", group_index = 2 },
 				}, {
 					{ name = "buffer" },
 				}),
@@ -77,19 +102,19 @@ return {
 				},
 			})
 
-      cmp.setup.cmdline(':', {
-      mapping = cmp.mapping.preset.cmdline(),
-      sources = cmp.config.sources({
-        { name = 'path' }
-      }, {
-        {
-          name = 'cmdline',
-          option = {
-            ignore_cmds = { 'Man', '!' }
-          }
-        }
-      })
-    })
+			cmp.setup.cmdline(":", {
+				mapping = cmp.mapping.preset.cmdline(),
+				sources = cmp.config.sources({
+					{ name = "path" },
+				}, {
+					{
+						name = "cmdline",
+						option = {
+							ignore_cmds = { "Man", "!" },
+						},
+					},
+				}),
+			})
 		end,
 	},
 }

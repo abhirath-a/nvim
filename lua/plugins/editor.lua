@@ -1,5 +1,3 @@
-
-
 return {
 	-- {
 	-- 	"ibhagwan/fzf-lua",
@@ -34,8 +32,20 @@ return {
 			local configs = require("nvim-treesitter.configs")
 
 			configs.setup({
-				ensure_installed = { "lua", "javascript", "typescript", "markdown" },
+				ensure_installed = {
+					"lua",
+					"javascript",
+					"typescript",
+					"markdown",
+					"go",
+					"gotmpl",
+					"gomod",
+					"gosum",
+					"rust",
+          "astro",
+				},
 				sync_install = false,
+				auto_install = true,
 				highlight = { enable = true },
 				indent = { enable = true },
 				compilers = {},
@@ -64,7 +74,7 @@ return {
 					wrap = true,
 				},
 			})
-			vim.keymap.set("n", "<C-n>", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+			vim.keymap.set("n", "<C-n>", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
 		end,
 	},
 
@@ -183,6 +193,7 @@ return {
 	-- 		return keys
 	-- 	end,
 	-- },
+	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	{
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.8",
@@ -194,6 +205,18 @@ return {
 			vim.keymap.set("n", "<leader>fg", telescope.live_grep, { desc = "live grep current project" })
 			vim.keymap.set("n", "<leader>fb", telescope.buffers, { desc = "Telescope buffers" })
 			vim.keymap.set("n", "<leader>fh", telescope.help_tags, { desc = "Telescope help tags" })
+			require("telescope").setup({
+				extensions = {
+					fzf = {
+						fuzzy = true, -- false will only do exact matching
+						override_generic_sorter = true, -- override the generic sorter
+						override_file_sorter = true, -- override the file sorter
+						case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+						-- the default case_mode is "smart_case"
+					},
+				},
+			})
+      require('telescope').load_extension('fzf')
 		end,
 	},
 	{ "echasnovski/mini.comment", version = false, config = true },
@@ -237,49 +260,50 @@ return {
 		-- Whether to disable showing non-error feedback
 		silent = false,
 	},
+	-- {
+	-- "echasnovski/mini.surround",
+	--    config=true,
+	-- opts = {
+	-- 	-- Add custom surroundings to be used on top of builtin ones. For more
+	-- 	-- information with examples, see `:h MiniSurround.config`.
+	-- 	custom_surroundings = nil,
+	--
+	-- 	-- Duration (in ms) of highlight when calling `MiniSurround.highlight()`
+	-- 	highlight_duration = 500,
+	--
+	-- 	-- Module mappings. Use `''` (empty string) to disable one.
+	-- 	mappings = {
+	-- 		add = "sa", -- Add surrounding in Normal and Visual modes
+	-- 		delete = "sd", -- Delete surrounding
+	-- 		find = "sf", -- Find surrounding (to the right)
+	-- 		find_left = "sF", -- Find surrounding (to the left)
+	-- 		highlight = "sh", -- Highlight surrounding
+	-- 		replace = "sr", -- Replace surrounding
+	-- 		update_n_lines = "sn", -- Update `n_lines`
+	--
+	-- 		suffix_last = "l", -- Suffix to search with "prev" method
+	-- 		suffix_next = "n", -- Suffix to search with "next" method
+	-- 	},
+	--
+	-- 	-- Number of lines within which surrounding is searched
+	-- 	n_lines = 20,
+	--
+	-- 	-- Whether to respect selection type:
+	-- 	-- - Place surroundings on separate lines in linewise mode.
+	-- 	-- - Place surroundings on each line in blockwise mode.
+	-- 	respect_selection_type = false,
+	--
+	-- 	-- How to search for surrounding (first inside current line, then inside
+	-- 	-- neighborhood). One of 'cover', 'cover_or_next', 'cover_or_prev',
+	-- 	-- 'cover_or_nearest', 'next', 'prev', 'nearest'. For more details,
+	-- 	-- see `:h MiniSurround.config`.
+	-- 	search_method = "cover",
+	--
+	-- 	-- Whether to disable showing non-error feedback
+	-- 	silent = false,
+	-- },	{
 	{
-	"echasnovski/mini.surround",
-    config=true,
-	opts = {
-		-- Add custom surroundings to be used on top of builtin ones. For more
-		-- information with examples, see `:h MiniSurround.config`.
-		custom_surroundings = nil,
-
-		-- Duration (in ms) of highlight when calling `MiniSurround.highlight()`
-		highlight_duration = 500,
-
-		-- Module mappings. Use `''` (empty string) to disable one.
-		mappings = {
-			add = "sa", -- Add surrounding in Normal and Visual modes
-			delete = "sd", -- Delete surrounding
-			find = "sf", -- Find surrounding (to the right)
-			find_left = "sF", -- Find surrounding (to the left)
-			highlight = "sh", -- Highlight surrounding
-			replace = "sr", -- Replace surrounding
-			update_n_lines = "sn", -- Update `n_lines`
-
-			suffix_last = "l", -- Suffix to search with "prev" method
-			suffix_next = "n", -- Suffix to search with "next" method
-		},
-
-		-- Number of lines within which surrounding is searched
-		n_lines = 20,
-
-		-- Whether to respect selection type:
-		-- - Place surroundings on separate lines in linewise mode.
-		-- - Place surroundings on each line in blockwise mode.
-		respect_selection_type = false,
-
-		-- How to search for surrounding (first inside current line, then inside
-		-- neighborhood). One of 'cover', 'cover_or_next', 'cover_or_prev',
-		-- 'cover_or_nearest', 'next', 'prev', 'nearest'. For more details,
-		-- see `:h MiniSurround.config`.
-		search_method = "cover",
-
-		-- Whether to disable showing non-error feedback
-		silent = false,
-	},	{
-      "akinsho/toggleterm.nvim",
+		"akinsho/toggleterm.nvim",
 		version = "*",
 		config = function()
 			-- let &shell = 'pwsh'
@@ -288,25 +312,24 @@ return {
 			})
 		end,
 	},
-	{
-		"ryanmsnyder/toggleterm-manager.nvim",
-		dependencies = {
-			"akinsho/nvim-toggleterm.lua",
-			"nvim-telescope/telescope.nvim",
-			"nvim-lua/plenary.nvim", -- only needed because it's a dependency of telescope
-		},
-		config = function()
-			require("toggleterm-manager").setup({})
-			vim.keymap.set("n", "<C-`>", ":Telescope toggleterm_manager", { noremap = true, silent = true })
-		end,
-	},
-	--	{
-	--	"echasnovski/mini.files",
-	--version = false,
-	--config = function()
-	--require("mini.files").setup()
-	--vim.keymap.set("n", "<C-n>", require("mini.files").open, { desc = "Fzf Files" })
-	--end,
+	-- {
+	-- 	"ryanmsnyder/toggleterm-manager.nvim",
+	-- 	dependencies = {
+	-- 		"akinsho/nvim-toggleterm.lua",
+	-- 		"nvim-telescope/telescope.nvim",
+	-- 		"nvim-lua/plenary.nvim", -- only needed because it's a dependency of telescope
+	-- 	},
+	-- 	config = function()
+	-- 		require("toggleterm-manager").setup({})
+	-- 		vim.keymap.set("n", "<C-`>", ":Telescope toggleterm_manager", { noremap = true, silent = true })
+	-- 	end,
 	-- },
-}
+	-- {
+	--   "echasnovski/mini.files",
+	--   version = false,
+	--   config = function()
+	--     require("mini.files").setup()
+	--     vim.keymap.set("n", "<C-n>", require("mini.files").open, { desc = "Fzf Files" })
+	--   end,
+	-- },
 }

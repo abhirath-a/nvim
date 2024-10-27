@@ -8,49 +8,67 @@ return {
 			vim.cmd([[colorscheme tokyonight-night]])
 		end,
 	},
--- 	{
--- 		"nvimdev/dashboard-nvim",
--- 		event = "VimEnter",
--- 		config = function()
--- 			local logo = [[
---  █████╗ ██████╗ ██╗  ██╗██╗  ██╗   ██╗██╗███╗   ███╗██╗
--- ██╔══██╗██╔══██╗██║  ██║██║  ██║   ██║██║████╗ ████║██║
--- ███████║██████╔╝███████║██║  ██║   ██║██║██╔████╔██║██║
--- ██╔══██║██╔══██╗██╔══██║██║  ╚██╗ ██╔╝██║██║╚██╔╝██║╚═╝
--- ██║  ██║██████╔╝██║  ██║██║██╗╚████╔╝ ██║██║ ╚═╝ ██║██╗
--- ╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝╚═╝╚═╝ ╚═══╝  ╚═╝╚═╝     ╚═╝╚═╝
---   ]]
---
--- 			logo = string.rep("\n", 8) .. logo .. "\n\n"
---
--- 			require("dashboard").setup({
--- 				config = {
---
--- 					header = vim.split(logo, "\n"),
--- 				},
--- 			})
--- 		end,
--- 		dependencies = { { "nvim-tree/nvim-web-devicons" } },
--- 	},
-{
-    'goolord/alpha-nvim',
-    config = function ()
-       local alpha = require("alpha")
-       local dashboard = require('alpha.themes.startify')
-       dashboard.section.header.val = {
-          
-  [[  █████╗ ██████╗ ██╗  ██╗██╗  ██╗   ██╗██╗███╗   ███╗██╗ ]],
-  [[ ██╔══██╗██╔══██╗██║  ██║██║  ██║   ██║██║████╗ ████║██║ ]],
-  [[ ███████║██████╔╝███████║██║  ██║   ██║██║██╔████╔██║██║ ]],
-  [[ ██╔══██║██╔══██╗██╔══██║██║  ╚██╗ ██╔╝██║██║╚██╔╝██║╚═╝ ]],
-  [[ ██║  ██║██████╔╝██║  ██║██║██╗╚████╔╝ ██║██║ ╚═╝ ██║██╗ ]],
-  [[ ╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝╚═╝╚═╝ ╚═══╝  ╚═╝╚═╝     ╚═╝╚═╝ ]]
-     }
-                 alpha.setup(dashboard.config)
-      
-    end
-},
+	-- 	{
+	-- 		"nvimdev/dashboard-nvim",
+	-- 		event = "VimEnter",
+	-- 		config = function()
+	-- 			local logo = [[
+	--  █████╗ ██████╗ ██╗  ██╗██╗  ██╗   ██╗██╗███╗   ███╗██╗
+	-- ██╔══██╗██╔══██╗██║  ██║██║  ██║   ██║██║████╗ ████║██║
+	-- ███████║██████╔╝███████║██║  ██║   ██║██║██╔████╔██║██║
+	-- ██╔══██║██╔══██╗██╔══██║██║  ╚██╗ ██╔╝██║██║╚██╔╝██║╚═╝
+	-- ██║  ██║██████╔╝██║  ██║██║██╗╚████╔╝ ██║██║ ╚═╝ ██║██╗
+	-- ╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝╚═╝╚═╝ ╚═══╝  ╚═╝╚═╝     ╚═╝╚═╝
+	--   ]]
+	--
+	-- 			logo = string.rep("\n", 8) .. logo .. "\n\n"
+	--
+	-- 			require("dashboard").setup({
+	-- 				config = {
+	--
+	-- 					header = vim.split(logo, "\n"),
+	-- 				},
+	-- 			})
+	-- 		end,
+	-- 		dependencies = { { "nvim-tree/nvim-web-devicons" } },
+	-- 	},
+	{
+		"goolord/alpha-nvim",
+		config = function()
+			local alpha = require("alpha")
+			local dashboard = require("alpha.themes.startify")
+			dashboard.section.header.val = {
 
+				[[  █████╗ ██████╗ ██╗  ██╗██╗  ██╗   ██╗██╗███╗   ███╗██╗ ]],
+				[[ ██╔══██╗██╔══██╗██║  ██║██║  ██║   ██║██║████╗ ████║██║ ]],
+				[[ ███████║██████╔╝███████║██║  ██║   ██║██║██╔████╔██║██║ ]],
+				[[ ██╔══██║██╔══██╗██╔══██║██║  ╚██╗ ██╔╝██║██║╚██╔╝██║╚═╝ ]],
+				[[ ██║  ██║██████╔╝██║  ██║██║██╗╚████╔╝ ██║██║ ╚═╝ ██║██╗ ]],
+				[[ ╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝╚═╝╚═╝ ╚═══╝  ╚═╝╚═╝     ╚═╝╚═╝ ]],
+			}
+			alpha.setup(dashboard.config)
+		end,
+	},
+	{
+		"folke/trouble.nvim",
+		config = function()
+			require("trouble").setup({
+				-- icons = false,
+			})
+
+			vim.keymap.set("n", "<leader>tt", function()
+				require("trouble").toggle()
+			end)
+
+			vim.keymap.set("n", "[t", function()
+				require("trouble").next({ skip_groups = true, jump = true })
+			end)
+
+			vim.keymap.set("n", "]t", function()
+				require("trouble").previous({ skip_groups = true, jump = true })
+			end)
+		end,
+	},
 	-- {
 	-- 	"rose-pine/neovim",
 	-- 	name = "rose-pine",
