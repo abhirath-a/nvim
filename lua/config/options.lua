@@ -6,6 +6,7 @@ vim.g.mapleader = " "
 vim.g.background = "light"
 vim.opt.swapfile = false
 vim.opt.termguicolors = true
+vim.opt.signcolumn = "yes"
 -- Navigate vim panes better
 vim.keymap.set("n", "<c-k>", ":wincmd k<CR>")
 vim.keymap.set("n", "<c-j>", ":wincmd j<CR>")

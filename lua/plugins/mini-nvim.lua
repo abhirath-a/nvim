@@ -1,9 +1,20 @@
 return {
-	'echasnovski/mini.nvim',
-	version = '*',
-	config = function()
-		require("mini.icons").setup()
-		require("mini.comment").setup()
-	end,
+  {
+    "echasnovski/mini.icons",
+    lazy = true,
+    version = "*",
+    opts = {},
+  },
+  {
+    "echasnovski/mini.comment",
+    lazy = true,
+    version = "*",
+    opts = {},
+  },
+  {
+    "echasnovski/mini.pairs",
+    lazy = true,
+    version = "*",
+    opts = {},
+  },
 }
-

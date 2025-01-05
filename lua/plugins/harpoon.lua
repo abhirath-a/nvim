@@ -1,66 +1,12 @@
 return {
 	"ThePrimeagen/harpoon",
 	branch = "harpoon2",
-	dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
-	config = function()
-		local harpoon = require("harpoon")
-
-		-- REQUIRED
-		harpoon:setup()
-		-- REQUIRED
-
-		vim.keymap.set("n", "<leader>a", function()
-			harpoon:list():add()
-		end)
-
-		local conf = require("telescope.config").values
-		local function toggle_telescope(harpoon_files)
-			local file_paths = {}
-			for _, item in ipairs(harpoon_files.items) do
-				table.insert(file_paths, item.value)
-			end
-
-			require("telescope.pickers")
-				.new({}, {
-					prompt_title = "Harpoon",
-					finder = require("telescope.finders").new_table({
-						results = file_paths,
-					}),
-					previewer = conf.file_previewer({}),
-					sorter = conf.generic_sorter({}),
-				})
-				:find()
-		end
-
-		vim.keymap.set("n", "<C-e>", function()
-			harpoon.ui:toggle_quick_menu(harpoon:list())
-		end, { desc = "Open harpoon window" })
-		vim.keymap.set("n", "<leader>b", function()
-			harpoon:list():remove()
-		end, { desc = "bye bye current buffer :)", noremap = true })
-		vim.keymap.set("n", "<leader>he", function()
-			harpoon.ui:toggle_quick_menu(harpoon:list())
-		end)
-
-		-- vim.keymap.set("n", "<C-h>", function()
-		-- 	harpoon:list():select(1)
-		-- end)
-		-- vim.keymap.set("n", "<C-t>", function()
-		-- 	harpoon:list():select(2)
-		-- end)
-		-- vim.keymap.set("n", "<C-n>", function()
-		-- 	harpoon:list():select(3)
-		-- end)
-		-- vim.keymap.set("n", "<C-s>", function()
-		-- 	harpoon:list():select(4)
-		-- end)
-		--
-		-- Toggle previous & next buffers stored within Harpoon list
-		vim.keymap.set("n", "<leader>z", function()
-			harpoon:list():prev()
-		end, { noremap = true })
-		vim.keymap.set("n", "<leader>m", function()
-			harpoon:list():next()
-		end, { noremap = true })
-	end,
+	dependencies = { "nvim-lua/plenary.nvim"},
+  keys = {
+    {"<leader>a", "<cmd>lua require('harpoon.mark').add_file()<cr>"},
+    {"<C-e>", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>"},
+    {"<leader>z", "<cmd>lua require('harpoon.ui').nav_next()<cr>", noremap=true},
+    {"<leader>m", "<cmd>lua require('harpoon.ui').nav_prev()<cr>",noremap=true}
+  },
+  opts = {},
 }
