@@ -20,7 +20,6 @@ return {
 				"rust_analyzer",
 				"ts_ls",
 				"astro",
-				"ruff",
 			},
 			automatic_installation = true,
 			handlers = {
@@ -30,16 +29,25 @@ return {
 				emmet_language_server = function()
 					require("lspconfig").emmet_language_server.setup({
 						filetypes = {
-							"css",
-							"eruby",
-							"html",
 							"javascript",
 							"javascriptreact",
-							"less",
-							"sass",
-							"scss",
-							"pug",
+							"typescript",
 							"typescriptreact",
+							"vue",
+							"css",
+							"scss",
+							"less",
+							"html",
+							"json",
+							"jsonc",
+							"yaml",
+							"markdown",
+							"markdown.mdx",
+							"graphql",
+							"handlebars",
+							"svelte",
+							"astro",
+							"htmlangular",
 						},
 						init_options = {
 							---@type table<string, string>
