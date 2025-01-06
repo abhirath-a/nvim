@@ -1,9 +1,10 @@
-local lsp_formatting = function()
+local lsp_formatting = function(bufnr)
 	vim.lsp.buf.format({
 		filter = function(client)
 			-- apply whatever logic you want (in this example, we'll only use null-ls)
 			return client.name == "null-ls"
 		end,
+		bufnr = bufnr,
 	})
 end
 return {
@@ -48,7 +49,7 @@ return {
 						callback = function()
 							-- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
 							-- on later neovim version, you should use vim.lsp.buf.format({ async = false }) instead
-							lsp_formatting()
+							lsp_formatting(bufnr)
 						end,
 					})
 				end
