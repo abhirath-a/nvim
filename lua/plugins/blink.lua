@@ -1,13 +1,22 @@
 return {
 	"saghen/blink.cmp",
 	-- optional: provides snippets for the snippet source
-	dependencies = { "rafamadriz/friendly-snippets", "giuxtaposition/blink-cmp-copilot" },
+	dependencies = {
+		"rafamadriz/friendly-snippets",
+		"giuxtaposition/blink-cmp-copilot",
+		-- {
+		-- 	"echasnovski/mini.icons",
+		-- 	lazy = true,
+		-- 	version = "*",
+		-- 	opts = {},
+		-- },
+	},
 	-- load cmp on InsertEnter
-	event = "VeryLazy",
+	event = "InsertEnter",
 	-- use a release tag to download pre-built binaries
-	version = "0.9.0",
+	version = "*",
 	-- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
-	build = 'cargo build --release',
+	build = "cargo build --release",
 	-- If you use nix, you can build from source using latest nightly rust with:
 	-- build = 'nix run .#build-plugin',
 
@@ -18,27 +27,11 @@ return {
 		-- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
 		-- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
 		-- See the full "keymap" documentation for information on defining your own keymap.
-		keymap = { preset = "default" },
+		keymap = { preset = "super-tab" },
 		completion = {
 			menu = {
 				border = "rounded",
 				winhighlight = "Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder,CursorLine:BlinkCmpDocCursorLine,Search:None",
-				draw = {
-					components = {
-						kind_icon = {
-							ellipsis = false,
-							text = function(ctx)
-								local kind_icon, _, _ = require("mini.icons").get("lsp", ctx.kind)
-								return kind_icon
-							end,
-							-- Optionally, you may also use the highlights from mini.icons
-							highlight = function(ctx)
-								local _, hl, _ = require("mini.icons").get("lsp", ctx.kind)
-								return hl
-							end,
-						},
-					},
-				},
 			},
 			documentation = { window = { border = "rounded" } },
 		},
@@ -51,18 +44,66 @@ return {
 			-- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
 			-- Adjusts spacing to ensure icons are aligned
 			nerd_font_variant = "mono",
+			kind_icons = {
+				Copilot = "",
+				Text = "󰉿",
+				Method = "󰊕",
+				Function = "󰊕",
+				Constructor = "󰒓",
+
+				Field = "󰜢",
+				Variable = "󰆦",
+				Property = "󰖷",
+
+				Class = "󱡠",
+				Interface = "󱡠",
+				Struct = "󱡠",
+				Module = "󰅩",
+
+				Unit = "󰪚",
+				Value = "󰦨",
+				Enum = "󰦨",
+				EnumMember = "󰦨",
+
+				Keyword = "󰻾",
+				Constant = "󰏿",
+
+				Snippet = "󱄽",
+				Color = "󰏘",
+				File = "󰈔",
+				Reference = "󰬲",
+				Folder = "󰉋",
+				Event = "󱐋",
+				Operator = "󰪚",
+				TypeParameter = "󰬛",
+			},
 		},
 
 		-- Default list of enabled providers defined so that you can extend it
 		-- elsewhere in your config, without redefining it, due to `opts_extend`
 		sources = {
-			default = { "lsp", "path", "snippets", "buffer", "copilot" },
+			default = { "lazydev", "lsp", "path", "snippets", "buffer", "copilot" },
 			providers = {
+				lazydev = {
+					name = "LazyDev",
+					module = "lazydev.integrations.blink",
+					-- make lazydev completions top priority (see `:h blink.cmp`)
+					score_offset = 100,
+				},
 				copilot = {
 					name = "copilot",
 					module = "blink-cmp-copilot",
 					score_offset = 100,
 					async = true,
+					transform_items = function(_, items)
+						local CompletionItemKind = require("blink.cmp.types").CompletionItemKind
+						local kind_idx = #CompletionItemKind + 1
+						CompletionItemKind[kind_idx] = "Copilot"
+						for _, item in ipairs(items) do
+							item.kind = kind_idx
+						end
+						return items
+					end,
 				},
 			},
 		},

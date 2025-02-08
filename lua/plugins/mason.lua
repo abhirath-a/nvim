@@ -6,13 +6,18 @@ return {
 	--   opts = {},
 	-- },
 	{
+		"williamboman/mason.nvim",
+		opts = { ensure_installed = { "java-debug-adapter", "java-test" } },
+		cmd = "Mason",
+	},
+	{
 		"williamboman/mason-lspconfig.nvim",
 		-- lazy = false,
-		dependencies = { { "williamboman/mason.nvim", opts = {} } },
+		dependencies = { { "williamboman/mason.nvim" } },
 		event = { "BufReadPre", "BufNewFile" },
 		opts = {
 			ensure_installed = {
-				"eslint",
+				-- "eslint",
 				"tailwindcss",
 				"lua_ls",
 				"emmet_language_server",
@@ -20,6 +25,7 @@ return {
 				"rust_analyzer",
 				"ts_ls",
 				"astro",
+				"jdtls",
 			},
 			automatic_installation = true,
 			handlers = {
@@ -83,7 +89,18 @@ return {
 						},
 					})
 				end,
+				jdtls = function()
+					return true
+				end,
 			},
 		},
 	},
+	-- {
+	-- 	"jay-babu/mason-nvim-dap.nvim",
+	-- 	lazy = true,
+	-- 	dependencies = { { "williamboman/mason.nvim" } },
+	-- 	opts = {
+	-- 		ensure_installed = { "java-debug-adapter" },
+	-- 	},
+	-- },
 }
