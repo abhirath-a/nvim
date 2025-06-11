@@ -4,11 +4,8 @@ return {
 	dependencies = { "saghen/blink.cmp" },
 	config = function()
 		local lspconfig_defaults = require("lspconfig").util.default_config
-		lspconfig_defaults.capabilities = vim.tbl_deep_extend(
-			"force",
-			lspconfig_defaults.capabilities,
-			require("blink.cmp").get_lsp_capabilities()
-		)
+		lspconfig_defaults.capabilities =
+			vim.tbl_deep_extend("force", lspconfig_defaults.capabilities, require("blink.cmp").get_lsp_capabilities())
 
 		-- This is where you enable features that only work
 		-- if there is a language server active in the file

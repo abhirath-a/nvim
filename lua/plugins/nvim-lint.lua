@@ -8,20 +8,20 @@ return {
 		{
 			"<leader>l",
 			function()
-				require("lint").try_lint()
+				require("lint").try_lint(nil, { ignore_errors = true })
 			end,
 		},
 	},
 	config = function()
 		local lint = require("lint")
-
+		local web_linters = { "eslint" }
 		lint.linters_by_ft = {
-			astro = { "eslint" },
-			javascript = { "eslint" },
-			typescript = { "eslint" },
-			javascriptreact = { "eslint" },
-			typescriptreact = { "eslint" },
-			svelte = { "eslint" },
+			astro = web_linters,
+			javascript = web_linters,
+			typescript = web_linters,
+			javascriptreact = web_linters,
+			typescriptreact = web_linters,
+			svelte = web_linters,
 			python = { "pylint" },
 			-- lua = { "selene" },
 		}
@@ -41,7 +41,7 @@ return {
 		vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
 			group = lint_augroup,
 			callback = function()
-				lint.try_lint()
+				lint.try_lint(nil, { ignore_errors = true })
 			end,
 		})
 	end,

@@ -23,6 +23,7 @@ return {
 	---@module 'blink.cmp'
 	---@type blink.cmp.Config
 	opts = {
+
 		-- 'default' for mappings similar to built-in completion
 		-- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
 		-- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
@@ -33,9 +34,18 @@ return {
 				border = "rounded",
 				winhighlight = "Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder,CursorLine:BlinkCmpDocCursorLine,Search:None",
 			},
-			documentation = { window = { border = "rounded" } },
+			-- documentation = { window = { border = "rounded" } },
+			accept = { auto_brackets = { enabled = true } },
+
+			documentation = {
+				auto_show = true,
+				auto_show_delay_ms = 250,
+				treesitter_highlighting = true,
+
+				window = { border = "rounded" },
+			},
 		},
-		signature = { window = { border = "single" } },
+		-- signature = { enabled = true, window = { border = "single" } },
 		appearance = {
 			-- Sets the fallback highlight groups to nvim-cmp's highlight groups
 			-- Useful for when your theme doesn't support blink.cmp

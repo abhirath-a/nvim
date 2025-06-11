@@ -1,4 +1,20 @@
 return {
+	{
+		"craftzdog/solarized-osaka.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("solarized-osaka").setup({ transparent = false })
+			vim.cmd([[colorscheme solarized-osaka]])
+		end,
+	},
+	-- {
+	-- 	"Mofiqul/vscode.nvim",
+	-- 	opts = {},
+	-- 	config = function()
+	-- 		vim.cmd.colorscheme("vscode")
+	-- 	end,
+	-- },
 	-- {
 	-- 	"catppuccin/nvim",
 	-- 	name = "catppuccin",
@@ -8,15 +24,15 @@ return {
 	-- 		vim.cmd.colorscheme("catppuccin")
 	-- 	end,
 	-- },
-	{
-		"folke/tokyonight.nvim",
-		lazy = false,
-		priority = 1000,
-		opts = {},
-		config = function()
-			vim.cmd([[colorscheme tokyonight-moon]])
-		end,
-	},
+	-- {
+	-- 	"folke/tokyonight.nvim",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	opts = {},
+	-- 	config = function()
+	-- 		vim.cmd([[colorscheme tokyonight-moon]])
+	-- 	end,
+	-- },
 	-- {
 	-- 	"rose-pine/neovim",
 	-- 	lazy = false,
