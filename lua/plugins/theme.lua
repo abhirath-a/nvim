@@ -1,13 +1,28 @@
 return {
 	{
-		"craftzdog/solarized-osaka.nvim",
+		"sainnhe/gruvbox-material",
 		lazy = false,
 		priority = 1000,
 		config = function()
-			require("solarized-osaka").setup({ transparent = false })
-			vim.cmd([[colorscheme solarized-osaka]])
+			-- Optionally configure and load the colorscheme
+			-- directly inside the plugin declaration.
+			vim.g.gruvbox_material_enable_italic = true
+			vim.g.gruvbox_material_foreground = "mix"
+			vim.g.gruvbox_material_background = "hard"
+			vim.g.gruvbox_material_ui_contrast = "high" -- The contrast of line numbers, indent lines, etc.
+			vim.g.gruvbox_material_float_style = "dim" -- Background of floating windows
+			vim.cmd.colorscheme("gruvbox-material")
 		end,
 	},
+	-- {
+	-- 	"craftzdog/solarized-osaka.nvim",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	config = function()
+	-- 		require("solarized-osaka").setup({ transparent = false })
+	-- 		vim.cmd([[colorscheme solarized-osaka]])
+	-- 	end,
+	-- },
 	-- {
 	-- 	"Mofiqul/vscode.nvim",
 	-- 	opts = {},
@@ -30,7 +45,7 @@ return {
 	-- 	priority = 1000,
 	-- 	opts = {},
 	-- 	config = function()
-	-- 		vim.cmd([[colorscheme tokyonight-moon]])
+	-- 		vim.cmd([[colorscheme tokyonight-night]])
 	-- 	end,
 	-- },
 	-- {
@@ -46,7 +61,22 @@ return {
 	-- 	"sam4llis/nvim-tundra",
 	-- 	priority = 10000,
 	-- 	lazy = false,
-	-- 	config = function()
+	-- 	init = function()
+	-- 		require("nvim-tundra").setup({
+	-- 			plugins = {
+	-- 				lsp = true,
+	-- 				semantic_tokens = true,
+	-- 				treesitter = true,
+	-- 				telescope = true,
+	-- 				nvimtree = true,
+	-- 				cmp = true,
+	-- 				context = true,
+	-- 				dbui = true,
+	-- 				gitsigns = true,
+	-- 				neogit = true,
+	-- 				textfsm = true,
+	-- 			},
+	-- 		})
 	-- 		vim.g.tundra_biome = "arctic" -- 'arctic' or 'jungle'
 	-- 		vim.opt.background = "dark"
 	-- 		vim.cmd("colorscheme tundra")
@@ -83,7 +113,15 @@ return {
 	--     priority = 1000,
 	--     config = function() vim.cmd.colorscheme("midnight") end,
 	-- }
-	--
+	-- {
+	-- 	"ellisonleao/gruvbox.nvim",
+	-- 	priority = 1000,
+	-- 	config = function()
+	-- 		vim.o.background = "dark" -- or "light" for light mode
+	-- 		vim.cmd([[colorscheme gruvbox]])
+	-- 	end,
+	-- 	opts = {},
+	-- },
 	-- {
 	-- 	"projekt0n/github-nvim-theme",
 	-- 	name = "github-theme",

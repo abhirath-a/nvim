@@ -9,7 +9,7 @@ return {
 			function()
 				require("conform").format({
 					lsp_fallback = true,
-					async = false,
+					async = true,
 					timeout_ms = 500,
 				})
 			end,
@@ -34,9 +34,9 @@ return {
 			java = { "google-java-format" },
 			-- python = { "isort", "black" },
 		},
-		format_on_save = {
+		format_after_save = {
 			lsp_fallback = true,
-			async = false,
+			async = true,
 			timeout_ms = 500,
 		},
 	},

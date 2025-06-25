@@ -2,8 +2,8 @@ return {
 	{
 		"mfussenegger/nvim-dap",
 		keys = {
-			{ "<leader>dt", "<CMD>lua require('dap').toggle_breakpoint" },
-			{ "<leader>dc", "<CMD>lua require('dap').continue" },
+			{ "<leader>dt", "<CMD>lua require('dap').toggle_breakpoint<CR>" },
+			{ "<leader>dc", "<CMD>lua require('dap').continue<CR>" },
 		},
 		dependencies = {
 			{

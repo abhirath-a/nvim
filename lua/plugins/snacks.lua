@@ -58,7 +58,13 @@ return {
 		statuscolumn = { enabled = true },
 		words = { enabled = true },
 		input = { enabled = true },
-		picker = { enabled = true },
+		picker = {
+			enabled = true,
+			exclude = { -- add folder names here to exclude
+				".git",
+				"node_modules",
+			},
+		},
 		dashboard = {
 			width = 60,
 			pane_gap = 4, -- empty columns between vertical panes
