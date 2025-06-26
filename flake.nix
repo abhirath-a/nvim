@@ -3,30 +3,20 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }:
+  outputs = { self, nixpkgs, ... }:
     let
-      system = "x86_64-linux"; # Adjust for your system
-      pkgs = nixpkgs.legacyPackages.${system};
+      system = "x86_64-linux";
     in {
-      packages.${system}.neovim = pkgs.neovim.override {
-        configure = {
-          customRC = ''
-            source ${self}/init.lua
-          '';
-        };
-        nativeBuildInputs = [ pkgs.luaPackages.luarocks ];
-      };
+      homeModules.default = { config, pkgs, ... }: {
+        programs.neovim = {
+          enable = true;
 
-      homeConfigurations.abhi = home-manager.lib.homeManagerConfiguration {
-        inherit system;
-        modules = [
-          ./home.nix
-          self.homeModules.default
-        ];
-        pkgs = nixpkgs.legacyPackages.${system};
+          # Inject your real init.lua as a Lua string
+          extraLuaConfig = builtins.readFile (self + "/init.lua");
+        };
       };
     };
 }
+
