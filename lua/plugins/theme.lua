@@ -1,19 +1,31 @@
 return {
-	{
-		"sainnhe/gruvbox-material",
-		lazy = false,
-		priority = 1000,
-		config = function()
-			-- Optionally configure and load the colorscheme
-			-- directly inside the plugin declaration.
-			vim.g.gruvbox_material_enable_italic = true
-			vim.g.gruvbox_material_foreground = "mix"
-			vim.g.gruvbox_material_background = "hard"
-			vim.g.gruvbox_material_ui_contrast = "high" -- The contrast of line numbers, indent lines, etc.
-			vim.g.gruvbox_material_float_style = "dim" -- Background of floating windows
-			vim.cmd.colorscheme("gruvbox-material")
-		end,
-	},
+  {
+    "tiagovla/tokyodark.nvim",
+    opts = {
+        -- custom options here
+    },
+    priority=100000,
+    lazy=false,
+    config = function(_, opts)
+        require("tokyodark").setup(opts) -- calling setup is optional
+        vim.cmd [[colorscheme tokyodark]]
+    end,
+}
+	-- {
+	-- 	"sainnhe/gruvbox-material",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	config = function()
+	-- 		-- Optionally configure and load the colorscheme
+	-- 		-- directly inside the plugin declaration.
+	-- 		vim.g.gruvbox_material_enable_italic = true
+	-- 		vim.g.gruvbox_material_foreground = "mix"
+	-- 		vim.g.gruvbox_material_background = "hard"
+	-- 		vim.g.gruvbox_material_ui_contrast = "high" -- The contrast of line numbers, indent lines, etc.
+	-- 		vim.g.gruvbox_material_float_style = "dim" -- Background of floating windows
+	-- 		vim.cmd.colorscheme("gruvbox-material")
+	-- 	end,
+	-- },
 	-- {
 	-- 	"craftzdog/solarized-osaka.nvim",
 	-- 	lazy = false,

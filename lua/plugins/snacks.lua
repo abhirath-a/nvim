@@ -4,41 +4,41 @@ return {
 	lazy = false,
 	-- event = "VeryLazy",
 	keys = {
-		{
-			"<C-p>",
-			function()
-				Snacks.picker.files()
-			end,
-			desc = "fzf files",
-		},
-		{
-			"<leader>fg",
-			function()
-				Snacks.picker.grep()
-			end,
-			desc = "live grep",
-		},
-		{
-			"<leader>fb",
-			function()
-				Snacks.picker.buffers()
-			end,
-			desc = "telescope buffers",
-		},
-		{
-			"<leader>fh",
-			function()
-				Snacks.picker.help()
-			end,
-			desc = "telescope help tags",
-		},
-		{
-			"<leader>fs",
-			function()
-				Snacks.picker.spelling()
-			end,
-			desc = "Spelling suggestions",
-		},
+		-- {
+		-- 	"<C-p>",
+		-- 	function()
+		-- 		Snacks.picker.files()
+		-- 	end,
+		-- 	desc = "fzf files",
+		-- },
+		-- {
+		-- 	"<leader>fg",
+		-- 	function()
+		-- 		Snacks.picker.grep()
+		-- 	end,
+		-- 	desc = "live grep",
+		-- },
+		-- {
+		-- 	"<leader>fb",
+		-- 	function()
+		-- 		Snacks.picker.buffers()
+		-- 	end,
+		-- 	desc = "telescope buffers",
+		-- },
+		-- {
+		-- 	"<leader>fh",
+		-- 	function()
+		-- 		Snacks.picker.help()
+		-- 	end,
+		-- 	desc = "telescope help tags",
+		-- },
+		-- {
+		-- 	"<leader>fs",
+		-- 	function()
+		-- 		Snacks.picker.spelling()
+		-- 	end,
+		-- 	desc = "Spelling suggestions",
+		-- },
 		{
 			"<C-q>",
 			function()
@@ -58,13 +58,13 @@ return {
 		statuscolumn = { enabled = true },
 		words = { enabled = true },
 		input = { enabled = true },
-		picker = {
-			enabled = true,
-			exclude = { -- add folder names here to exclude
-				".git",
-				"node_modules",
-			},
-		},
+		-- picker = {
+		-- 	enabled = true,
+		-- 	exclude = { -- add folder names here to exclude
+		-- 		".git",
+		-- 		"node_modules",
+		-- 	},
+		-- },
 		dashboard = {
 			width = 60,
 			pane_gap = 4, -- empty columns between vertical panes

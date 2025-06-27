@@ -1,28 +1,21 @@
-<div align="center">
-<table>
-<tbody>
-<td align="center">
-<img width="2000" height="0" /><br />
+# Abhi's Neovim Config
 
-## Abhi's Neovim Configuration
+A fast and modern `neovim` configuration. It starts up in 20-25ms. Requires Neovim 0.11 or newer due to the fact that it uses the native lsp implementation. 
 
+## Features
 
-*"A batteries-included yet minimal neovim config."*
+- 🔥 Blazingly fast
+- 💤 Lazy Loaded packages
+- 🧹 Sane default settings for options, autocmds, and keymaps
+- 📦 Preconfigured packages
 
-<img width="2000" height="0" />
-</td>
-</tbody>
-</table>
-</div>
-
-<h3 align="center">Built With:</h4>
-
-- 📦 `lazy.nvim` for a easy to extend, widely supported package managing experience
-- ✒️ `blink-cmp` for simple and speedy snippets
-- 🌳 `lspconfig and treesitter` for ease of use and native integration
-- 🪨 `mason` for easy enviorment recreation for language servers
-- 💥 `noice` for nice pop ups that feel snappy
-- 🍿 `snacks-nvim` for simple, integrated plugins for miscellaneous needs
-- 🔍 `fzf-lua` for fast and widely supported fuzzy searching
-- 🤵 `none-ls` for advanced formatting and linting with support for use within code actions
-- 🛢️ `oil.nvim` for efficient file editing, similar to editing in a buffer (use fzf-lua for file navigation)
+## Plugins used
+- 💤 `lazy.nvim` - for fast, lazy loaded package installations.
+- ✨ `noice.nvim` - for stunning pop-ups and a centered command area
+- 📝 `blink.cmp` - for quick and natural feeling autocompletion in the editor.
+- 🔎 `fzf-lua` - for rapid searching and selection.
+- 🛢️ `oil.nvim` - for idiomatic file editing.
+- ✅ `nvim-lint` - for reliable and dependable linting.
+- 🪥 `conform.nvim` - for asynchronous formatting that also formats on save. 
+- ⌨️ `which-key.nvim` - for a beautiful keymap cheatsheet that shows up while typing commands
+- 🤖 `copilot.lua` - for all of the useful features that github copilot offers to the developer experience.

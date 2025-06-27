@@ -1,1 +1,3 @@
-require("main")
+require("core.lazy")
+require("core.options")
+require("core.autocmds")
