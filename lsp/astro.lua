@@ -18,6 +18,7 @@ function get_typescript_server_path(root_dir)
   end
   return ''
 end
+
 return {
   cmd = { 'astro-ls', '--stdio' },
   filetypes = { 'astro' },

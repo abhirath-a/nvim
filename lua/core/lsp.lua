@@ -5,7 +5,9 @@ vim.lsp.enable({
   "emmet_language_server",
   "lua_ls",
   "elixirls",
-  "ruby_lsp"
+  "ruby_lsp",
+  "gopls",
+  "svelte"
 })
 
 vim.diagnostic.config({
