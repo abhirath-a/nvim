@@ -1,208 +1,24 @@
+-- past themes
+-- ! folke/tokyonight.nvim
+-- AstroNvim/astrotheme *requires setup
+-- navarasu/onedark.nvim *requires setup and is loaded thru .load func
+-- tiagovla/tokyodark.nvim *requires setup
+-- sainnhe/gruvbox-material
+-- craftzdog/solarized-osaka.nvim *requires setup
+-- Mofiqul/vscode.nvim
+-- catppuccin/nvim *requires setup w/ flavour eg. { flavour: "mocha" }
+-- rose-pine/neovim
+-- sam4llis/nvim-tundra *requires setup
+-- diegoulloao/neofusion.nvim
+-- AlexvZyl/nordic.nvim *uses custom load function .load
+-- rebelot/kanagawa.nvim
+-- dasupradyumna/midnight.nvim
+-- ellisonleao/gruvbox.nvim *requires opts
+-- projekt0n/github-nvim-theme *rqeuires opts and name of "github-theme"
+-- Shatur/neovim-ayu *requires setup
 return {
-  -- {
-  --   "AstroNvim/astrotheme",
-  --   priority = 10000,
-  --   lazy = false,
-  --   config = function()
-  --     require("astrotheme").setup({
-  --       palette = "astrodark", -- String of the default palette to use when calling `:colorscheme astrotheme`
-  --       background = {         -- :h background, palettes to use when using the core vim background colors
-  --         light = "astrolight",
-  --         dark = "astrodark",
-  --       },
-  --
-  --       style = {
-  --         transparent = false,         -- Bool value, toggles transparency.
-  --         inactive = true,             -- Bool value, toggles inactive window color.
-  --         float = true,                -- Bool value, toggles floating windows background colors.
-  --         neotree = true,              -- Bool value, toggles neo-trees background color.
-  --         border = true,               -- Bool value, toggles borders.
-  --         title_invert = true,         -- Bool value, swaps text and background colors.
-  --         italic_comments = true,      -- Bool value, toggles italic comments.
-  --         simple_syntax_colors = true, -- Bool value, simplifies the amounts of colors used for syntax highlighting.
-  --       },
-  --
-  --
-  --       termguicolors = true,    -- Bool value, toggles if termguicolors are set by AstroTheme.
-  --
-  --       terminal_color = true,   -- Bool value, toggles if terminal_colors are set by AstroTheme.
-  --
-  --       plugin_default = "auto", -- Sets how all plugins will be loaded
-  --       -- "auto": Uses lazy / packer enabled plugins to load highlights.
-  --       -- true: Enables all plugins highlights.
-  --       -- false: Disables all plugins.
-  --
-  --     })
-  --     vim.cmd.colorscheme("astrotheme")
-  --   end
-  -- }
-  -- {
-  --   "navarasu/onedark.nvim",
-  --   priority = 1000, -- make sure to load this before all the other start plugins
-  --   config = function()
-  --     require('onedark').setup {
-  --       style = 'cool'
-  --     }
-  --     -- Enable theme
-  --     require('onedark').load()
-  --   end
-  -- }
-  -- {
-  --   "tiagovla/tokyodark.nvim",
-  --   opts = {
-  --     -- custom options here
-  --   },
-  --   priority = 100000,
-  --   lazy = false,
-  --   config = function(_, opts)
-  --     require("tokyodark").setup(opts)     -- calling setup is optional
-  --     vim.cmd [[colorscheme tokyodark]]
-  --   end,
-  -- }
-  -- {
-  --   "sainnhe/gruvbox-material",
-  --   lazy = false,
-  --   priority = 1000,
-  --   config = function()
-  --     -- Optionally configure and load the colorscheme
-  --     -- directly inside the plugin declaration.
-  --     vim.g.gruvbox_material_enable_italic = true
-  --     vim.g.gruvbox_material_foreground = "mix"
-  --     vim.g.gruvbox_material_background = "hard"
-  --     vim.g.gruvbox_material_ui_contrast = "high" -- The contrast of line numbers, indent lines, etc.
-  --     vim.g.gruvbox_material_float_style = "dim" -- Background of floating windows
-  --     vim.cmd.colorscheme("gruvbox-material")
-  --   end,
-  -- },
-  -- {
-  -- 	"craftzdog/solarized-osaka.nvim",
-  -- 	lazy = false,
-  -- 	priority = 1000,
-  -- 	config = function()
-  -- 		require("solarized-osaka").setup({ transparent = false })
-  -- 		vim.cmd([[colorscheme solarized-osaka]])
-  -- 	end,
-  -- },
-  -- {
-  -- 	"Mofiqul/vscode.nvim",
-  -- 	opts = {},
-  -- 	config = function()
-  -- 		vim.cmd.colorscheme("vscode")
-  -- 	end,
-  -- },
-  -- {
-  -- 	"catppuccin/nvim",
-  -- 	name = "catppuccin",
-  -- 	priority = 1000,
-  -- 	config = function()
-  -- 		require("catppuccin").setup({ flavour = "mocha" })
-  -- 		vim.cmd.colorscheme("catppuccin")
-  -- 	end,
-  -- },
-  {
     "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
-    opts = {},
     config = function()
-      vim.cmd([[colorscheme tokyonight-night]])
+        vim.cmd([[colorscheme tokyonight-night]])
     end,
-  },
-  -- {
-  -- 	"rose-pine/neovim",
-  -- 	lazy = false,
-  -- 	priority = 1000,
-  -- 	name = "rose-pine",
-  -- 	config = function()
-  -- 		vim.cmd("colorscheme rose-pine")
-  -- 	end,
-  -- },
-  -- {
-  --   "sam4llis/nvim-tundra",
-  --   priority = 10000,
-  --   lazy = false,
-  --   init = function()
-  --     require("nvim-tundra").setup({
-  --       plugins = {
-  --         lsp = true,
-  --         semantic_tokens = true,
-  --         treesitter = true,
-  --         telescope = true,
-  --         nvimtree = true,
-  --         cmp = true,
-  --         context = true,
-  --         dbui = true,
-  --         gitsigns = true,
-  --         neogit = true,
-  --         textfsm = true,
-  --       },
-  --     })
-  --     vim.g.tundra_biome = "arctic" -- 'arctic' or 'jungle'
-  --     vim.opt.background = "dark"
-  --     vim.cmd("colorscheme tundra")
-  --   end,
-  -- },
-  -- {
-  -- 	"diegoulloao/neofusion.nvim",
-  -- 	priority = 1000,
-  -- 	config = function()
-  -- 		vim.o.background = "dark"
-  -- 		vim.cmd([[ colorscheme neofusion ]])
-  -- 	end,
-  -- },
-  -- {
-  -- 	"AlexvZyl/nordic.nvim",
-  -- 	lazy = false,
-  -- 	priority = 1000,
-  -- 	config = function()
-  -- 		require("nordic").load()
-  -- 	end,
-  -- },
-  -- {
-  -- 	"rebelot/kanagawa.nvim",
-  -- 	lazy = false,
-  -- 	priority = 1000,
-  -- 	config = function()
-  -- 		vim.cmd("colorscheme kanagawa")
-  -- 	end,
-  -- },
-  --
-  --   {
-  --     "dasupradyumna/midnight.nvim",
-  --     lazy = true,
-  --     priority = 1000,
-  --     config = function() vim.cmd.colorscheme("midnight") end,
-  -- }
-  -- {
-  -- 	"ellisonleao/gruvbox.nvim",
-  -- 	priority = 1000,
-  -- 	config = function()
-  -- 		vim.o.background = "dark" -- or "light" for light mode
-  -- 		vim.cmd([[colorscheme gruvbox]])
-  -- 	end,
-  -- 	opts = {},
-  -- },
-  -- {
-  -- 	"projekt0n/github-nvim-theme",
-  -- 	name = "github-theme",
-  -- 	lazy = false, -- make sure we load this during startup if it is your main colorscheme
-  -- 	priority = 1000,-- make sure to load this before all the other start plugins
-  -- 	opts = {},
-  -- 	config = function()
-  -- 		vim.cmd("colorscheme github_dark_default")
-  -- 	end,
-  -- },
-  -- {
-  -- 	"Shatur/neovim-ayu",
-  -- 	priority = 1000,
-  -- 	lazy = false,
-  -- 	config = function()
-  -- 		require("ayu").setup({
-  -- 			mirage = false, -- Set to `true` to use `mirage` variant instead of `dark` for dark background.
-  -- 			terminal = false, -- Set to `false` to let terminal manage its own colors.
-  -- 			overrides = {}, -- A dictionary of group names, each associated with a dictionary of parameters (`bg`, `fg`, `sp` and `style`) and colors in hex.
-  -- 		})
-  -- 		vim.cmd.colorscheme("ayu-dark")
-  -- 	end,
-  -- },
 }
