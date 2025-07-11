@@ -1,4 +1,3 @@
-local web_formatters = { "prettier" }
 return {
   "stevearc/conform.nvim",
   event = { "BufReadPre", "BufNewFile" },
@@ -18,14 +17,14 @@ return {
   },
   opts = {
     formatters_by_ft = {
-      astro = web_formatters,
-      javascript = web_formatters,
-      typescript = web_formatters,
-      javascriptreact = web_formatters,
-      typescriptreact = web_formatters,
-      svelte = web_formatters,
-      css = web_formatters,
-      html = web_formatters,
+      astro = { "prettier" },
+      javascript = { "prettier" },
+      typescript = { "prettier" },
+      javascriptreact = { "prettier" },
+      typescriptreact = { "prettier" },
+      svelte = { "prettier" },
+      css = { "prettier" },
+      html = { "prettier" },
       json = { "prettier" },
       yaml = { "prettier" },
       markdown = { "prettier" },
@@ -34,7 +33,6 @@ return {
       java = { "google-java-format" },
       ruby = { "rubocop" },
       eruby = { "erb_format" },
-      -- python = { "isort", "black" },
     },
     format_after_save = {
       lsp_fallback = true,
