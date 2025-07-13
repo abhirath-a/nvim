@@ -1,0 +1,11 @@
+vim.lsp.enable({
+	"astro",
+	"ts_ls",
+	"tailwindcss",
+	"emmet_language_server",
+	"lua_ls",
+	"elixirls",
+	"ruby_lsp",
+	"gopls",
+	"svelte",
+})
