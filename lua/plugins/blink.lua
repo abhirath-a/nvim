@@ -6,7 +6,8 @@ return {
   },
   event = "InsertEnter",
   version = "*",
-  build = "cargo build --release",
+  -- build = "cargo build --release",
+  build = 'nix run .#build-plugin',
   opts = {
     keymap = { preset = "default" },
     cmdline = {
