@@ -39,7 +39,9 @@
           description = "Abhi's neovim config packaged as nix flake";
           license = licenses.mit;
           maintainers = with maintainers; [ ];
-        };
+        
+	platforms = platforms.all
+};
       };
 
       apps.${system}.default = {
