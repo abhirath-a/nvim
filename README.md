@@ -18,4 +18,3 @@ A fast and modern `neovim` configuration. It starts up in 17-20ms. Requires neov
 - ✅ `nvim-lint` - for reliable and dependable linting.
 - 🪥 `conform.nvim` - for asynchronous formatting that also formats on save. 
 - 🤖 `copilot.lua` - for all of the useful features that github copilot offers to the developer experience.
-- 🪨 `mason-lspconfig` - for managing lsps with lspconfig and mason
