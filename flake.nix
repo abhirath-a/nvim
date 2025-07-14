@@ -40,7 +40,7 @@
           license = licenses.mit;
           maintainers = with maintainers; [ ];
         
-	platforms = platforms.all
+	platforms = platforms.all;
 };
       };
 
