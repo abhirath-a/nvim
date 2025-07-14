@@ -8,4 +8,5 @@ vim.lsp.enable({
 	"ruby_lsp",
 	"gopls",
 	"svelte",
+  "nil_ls"
 })
