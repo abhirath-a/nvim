@@ -1,4 +1,5 @@
 # ⚡ Abhi's Neovim Config
+> This is not my daily driver neovim config anymore! I am now using [nixvim and my custom nixvim config](https://github.com/abhirath-a/nixvim-config). Though it won't be abandoned, this project won't be as actively updated compared to before.
 
 A fast and modern `neovim` configuration. It starts up in 17-20ms. Requires neovim v0.11+. 
 
