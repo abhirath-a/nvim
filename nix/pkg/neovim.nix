@@ -65,7 +65,7 @@ let
           ];
         };
     in
-    wrapNeovimUnstable neovim-nightly config;
+    wrapNeovimUnstable config;
 in
 buildFHSEnv {
   name = "nvim";
