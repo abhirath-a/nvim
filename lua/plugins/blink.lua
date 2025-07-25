@@ -7,7 +7,7 @@ return {
   event = "InsertEnter",
   version = "*",
   -- build = "cargo build --release",
-  build = 'nix run .#build-plugin',
+  build = 'nix run .#build-plugin --accept-flake-config',
   opts = {
     keymap = { preset = "default" },
     cmdline = {

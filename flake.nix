@@ -1,15 +1,38 @@
 {
-  description = "Abhi's neovim config packaged as nix flake";
+  description = "IogaMaster's Neovim Configuration";
 
-#--  inputs = {
- # --  nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-# -- };
-  outputs = { self, ... }:
-  {
-    # Just expose the source directory so others can use your config files
-    defaultPackage.x86_64-linux = self;
+  inputs.nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
 
-    # Optional devShell if you want
-    devShell.x86_64-linux = import ./shell.nix; # optional
-  };
+  outputs =
+    { nixpkgs, ... }:
+    let
+      inherit (nixpkgs) lib;
+      forAllSystems =
+        function:
+        nixpkgs.lib.genAttrs [
+          "x86_64-linux"
+          "aarch64-linux"
+        ] (system: function nixpkgs.legacyPackages.${system});
+    in
+    rec {
+      devShells = forAllSystems (pkgs: {
+        default = pkgs.mkShell {
+          nativeBuildInputs = with pkgs; [
+            alejandra
+            stylua
+          ];
+        };
+      });
+
+      packages = forAllSystems (pkgs: rec {
+        neovim = pkgs.callPackage ./nix/pkg/neovim.nix { bundled = false; };
+        neovim-bundled = pkgs.callPackage ./nix/pkg/neovim.nix { };
+        default = neovim-bundled;
+      });
+
+      overlays.default = final: prev: {
+        neovim = final.callPackage ./nix/pkg/neovim.nix { bundled = false; };
+        neovim-bundled = final.callPackage ./nix/pkg/neovim.nix { };
+      };
+    };
 }
