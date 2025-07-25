@@ -15,6 +15,14 @@
   bundled ? true,
 }:
 let
+  # Patch neovim-unwrapped to add missing meta fields
+  neovimUnwrappedWithMeta = neovim-unwrapped.overrideAttrs (oldAttrs: {
+    meta = (oldAttrs.meta or { }) // {
+      description = "Unwrapped Neovim with custom config and wrapper";
+      longDescription = "A custom Neovim build wrapped with additional runtime paths and dependencies";
+    };
+  });
+
   nvim =
     let
       config =
@@ -65,7 +73,7 @@ let
           ];
         };
     in
-    wrapNeovimUnstable neovim-unwrapped config;
+    wrapNeovimUnstable neovimUnwrappedWithMeta config;
 in
 buildFHSEnv {
   name = "nvim";
