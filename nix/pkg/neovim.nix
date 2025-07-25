@@ -1,7 +1,7 @@
 {
   lib,
   wrapNeovimUnstable,
-  neovim-unwrapped,
+  neovim-nightly,
   neovimUtils,
   writeShellScript,
   lua5_1,
@@ -15,14 +15,6 @@
   bundled ? true,
 }:
 let
-  # Patch neovim-unwrapped to add missing meta fields
-  neovimUnwrappedWithMeta = neovim-unwrapped.overrideAttrs (oldAttrs: {
-    meta = (oldAttrs.meta or { }) // {
-      description = "Unwrapped Neovim with custom config and wrapper";
-      longDescription = "A custom Neovim build wrapped with additional runtime paths and dependencies";
-    };
-  });
-
   nvim =
     let
       config =
@@ -73,7 +65,7 @@ let
           ];
         };
     in
-    wrapNeovimUnstable neovimUnwrappedWithMeta config;
+    wrapNeovimUnstable neovim-nightly config;
 in
 buildFHSEnv {
   name = "nvim";
