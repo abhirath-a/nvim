@@ -1,9 +1,9 @@
 return {
-  "mfussenegger/nvim-lint",
-  event = {
+  "nvim-lint",
+    event = {
     "BufReadPre",
     "BufNewFile",
-  },
+  }, 
   keys = {
     {
       "<leader>l",
@@ -12,7 +12,7 @@ return {
       end,
     },
   },
-  config = function()
+  after = function()
     local lint = require("lint")
     lint.linters_by_ft = {
       astro = { "eslint" },

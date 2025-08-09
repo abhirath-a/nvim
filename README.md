@@ -1,6 +1,6 @@
 # ⚡ Abhi's Neovim Config
 
-A fast and modern `neovim` configuration. It starts up in 17-20ms. Requires neovim v0.11+. 
+A fast and modern `neovim` + `nix` configuration. It starts up in 17-20ms. Requires neovim v0.11+. 
 
 ## Features
 
@@ -10,10 +10,10 @@ A fast and modern `neovim` configuration. It starts up in 17-20ms. Requires neov
 - 📦 Preconfigured packages and language servers
 
 ## Plugins used
-- 💤 `lazy.nvim` - for fast, lazy loaded package installations.
+- 💤 `lze` - for fast and efficient lazy loading.
 - ✨ `fidget.nvim` - for a simple and minimal `vim.notify` replacement 
 - 📝 `blink.cmp` - for quick and natural feeling autocompletion in the editor.
-- 🔎 `fzf-lua` - for rapid searching and selection.
+- 🔎 `mini.pick` - for rapid searching and selection.
 - 🛢️ `oil.nvim` - for idiomatic file editing.
 - ✅ `nvim-lint` - for reliable and dependable linting.
 - 🪥 `conform.nvim` - for asynchronous formatting that also formats on save. 
