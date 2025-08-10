@@ -49,6 +49,7 @@ let
   extraPackages = with pkgs; [
     lua-language-server
     nil
+    gopls
   ];
 in
 {
