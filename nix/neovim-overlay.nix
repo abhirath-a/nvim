@@ -36,7 +36,7 @@ let
     fidget-nvim
     vim-fugitive
     gitsigns-nvim
-    harpoon
+    harpoon2
     obsidian-nvim
     oil-nvim
     refactoring-nvim
