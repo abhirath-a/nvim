@@ -24,7 +24,6 @@ let
     mini-pick
     mini-extra
     mini-icons
-    mini-hipatterns
     kanagawa-nvim
     lze
     blink-cmp
@@ -45,11 +44,12 @@ let
     ts-autotag-nvim
     plenary-nvim
   ];
-
   extraPackages = with pkgs; [
     lua-language-server
     nil
     gopls
+    ruff
+    basedpyright
   ];
 in
 {

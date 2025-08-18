@@ -34,6 +34,7 @@ return {
         java = { "google-java-format" },
         ruby = { "rubocop" },
         eruby = { "erb_format" },
+        python = { "ruff" }
       },
       format_after_save = {
         lsp_fallback = true,

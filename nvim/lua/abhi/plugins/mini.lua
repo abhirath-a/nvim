@@ -44,10 +44,6 @@ return {
         '<leader>fw',
         '<cmd>Pick diagnostic<CR>',
       },
-      {
-        '<leader>ft',
-        '<cmd>Pick hipatterns<CR>',
-      },
     },
     after = function()
       require('mini.pick').setup()
@@ -58,34 +54,6 @@ return {
     dep_of = 'mini.pick',
     after = function()
       require('mini.extra').setup()
-    end,
-  },
-  {
-    'mini.hipatterns',
-    keys = {
-      '<leader>ft',
-    },
-    after = function()
-      require('mini.hipatterns').setup {
-        highlighters = {
-          fixme = {
-            pattern = '%f[%w]()FIXME()%f[%W]',
-            group = 'MiniHipatternsFixme',
-          },
-          hack = {
-            pattern = '%f[%w]()HACK()%f[%W]',
-            group = 'MiniHipatternsHack',
-          },
-          todo = {
-            pattern = '%f[%w]()TODO()%f[%W]',
-            group = 'MiniHipatternsTodo',
-          },
-          note = {
-            pattern = '%f[%w]()NOTE()%f[%W]',
-            group = 'MiniHipatternsNote',
-          },
-        },
-      }
     end,
   },
 }

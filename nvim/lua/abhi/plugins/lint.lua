@@ -1,9 +1,9 @@
 return {
   "nvim-lint",
-    event = {
+  event = {
     "BufReadPre",
     "BufNewFile",
-  }, 
+  },
   keys = {
     {
       "<leader>l",
@@ -21,8 +21,8 @@ return {
       javascriptreact = { "eslint" },
       typescriptreact = { "eslint" },
       svelte = { "eslint" },
-      python = { "pylint" },
-      ruby = { "rubocop" }
+      python = { "ruff" },
+      ruby = { "rubocop" },
     }
     local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
 
