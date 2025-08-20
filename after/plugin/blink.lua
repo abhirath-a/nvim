@@ -1,9 +1,5 @@
-return {
-	{
-		"blink.cmp",
-		event = "InsertEnter",
-		after = function()
-			require("blink.cmp").setup({
+require("copilot").setup()
+require("blink.cmp").setup({
 				cmdline = {
 					completion = { menu = { auto_show = true } },
 				},
@@ -23,36 +19,7 @@ return {
           window = { border = "rounded" }
         },
 				appearance = {
-					use_nvim_cmp_as_default = true,
 					nerd_font_variant = "mono",
-					kind_icons = {
-						Copilot = "",
-						Text = "󰉿",
-						Method = "󰊕",
-						Function = "󰊕",
-						Constructor = "󰒓",
-						Field = "󰜢",
-						Variable = "󰆦",
-						Property = "󰖷",
-						Class = "󱡠",
-						Interface = "󱡠",
-						Struct = "󱡠",
-						Module = "󰅩",
-						Unit = "󰪚",
-						Value = "󰦨",
-						Enum = "󰦨",
-						EnumMember = "󰦨",
-						Keyword = "󰻾",
-						Constant = "󰏿",
-						Snippet = "󱄽",
-						Color = "󰏘",
-						File = "󰈔",
-						Reference = "󰬲",
-						Folder = "󰉋",
-						Event = "󱐋",
-						Operator = "󰪚",
-						TypeParameter = "󰬛",
-					},
 				},
 				sources = {
 					default = { "lsp", "path", "snippets", "buffer", "copilot" },
@@ -60,7 +27,6 @@ return {
 						copilot = {
 							name = "copilot",
 							module = "blink-cmp-copilot",
-							score_offset = 100,
 							async = true,
 							transform_items = function(_, items)
 								local CompletionItemKind = require("blink.cmp.types").CompletionItemKind
@@ -75,22 +41,3 @@ return {
 					},
 				},
 			})
-		end,
-	},
-  {
-		"blink-cmp-copilot",
-		dep_of = "blink.cmp",
-	},
-  {
-    "friendly-snippets",
-    dep_of = "blink.cmp"
-  },
-	{
-		"copilot.lua",
-		dep_of = "blink-cmp-copilot",
-		cmd = "Copilot",
-		after = function()
-			require("copilot").setup()
-		end,
-	},
-}

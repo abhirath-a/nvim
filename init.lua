@@ -1,0 +1,62 @@
+-- set
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+vim.wo.number = true
+vim.wo.relativenumber = true
+vim.o.showtabline = 0
+vim.o.tabstop = 2
+vim.o.softtabstop = 2
+vim.o.shiftwidth = 2
+vim.o.expandtab = true
+vim.o.smartindent = true
+vim.o.wrap = false
+vim.o.swapfile = false
+vim.o.backup = false
+vim.o.undofile = true
+vim.o.hlsearch = false
+vim.o.incsearch = true
+vim.o.termguicolors = true
+vim.o.scrolloff = 8
+vim.o.signcolumn = "yes"
+vim.o.updatetime = 50
+vim.diagnostic.config({ virtual_text = true })
+-- remap
+vim.keymap.set("n", "<c-k>", ":wincmd k<CR>")
+vim.keymap.set("n", "<c-j>", ":wincmd j<CR>")
+vim.keymap.set("n", "<c-h>", ":wincmd h<CR>")
+vim.keymap.set("n", "<c-l>", ":wincmd l<CR>")
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set("n", "J", "mzJ`z")
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+vim.keymap.set("x", "<leader>p", [["_dP]])
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
+vim.keymap.set("n", "<leader>Y", [["+Y]])
+vim.keymap.set({ "n", "v" }, "<leader>d", '"_d')
+vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
+vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+-- lsp
+vim.api.nvim_create_autocmd("LspAttach", {
+	desc = "LSP actions",
+	callback = function(event)
+		vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = event.buf })
+		vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = event.buf })
+		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = event.buf })
+		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = event.buf })
+		vim.keymap.set("n", "go", vim.lsp.buf.type_definition, { buffer = event.buf })
+		vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = event.buf })
+		vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, { buffer = event.buf })
+		vim.keymap.set("n", "<F2>", function()
+			if not require("ts-autotag").rename() then
+				vim.lsp.buf.rename()
+			end
+		end, { buffer = event.buf })
+		vim.keymap.set({ "n", "x" }, "<F3>", vim.lsp.buf.format, { buffer = event.buf })
+		vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = event.buf })
+	end,
+})
+vim.lsp.enable({ "lua_ls", "gopls", "nil_ls", "basedpyright", "vtsls" })

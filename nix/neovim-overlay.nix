@@ -18,31 +18,34 @@ let
   };
 
   all-plugins = with pkgs.vimPlugins; [
+    # treesitter
     nvim-treesitter.withAllGrammars
-    mini-ai
-    mini-pairs
-    mini-pick
-    mini-extra
-    mini-icons
-    kanagawa-nvim
-    lze
+    ts-autotag-nvim
+    # mini
+    mini-nvim
+    # cmp
     blink-cmp
     friendly-snippets
     copilot-lua
     blink-cmp-copilot
+    # formatting
     conform-nvim
+    # linting
     nvim-lint
+    # minimal notification ui
     fidget-nvim
+    # git
     vim-fugitive
     gitsigns-nvim
+
     harpoon2
     obsidian-nvim
     oil-nvim
     refactoring-nvim
     vim-surround
     undotree
-    ts-autotag-nvim
     plenary-nvim
+    kanagawa-nvim
   ];
   extraPackages = with pkgs; [
     lua-language-server
@@ -50,6 +53,7 @@ let
     gopls
     ruff
     basedpyright
+    vtsls
   ];
 in
 {
