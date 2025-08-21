@@ -1,14 +1,14 @@
 require("obsidian").setup({
-  completion = {
-    blink = true, 
-  },
-  workspaces = {
-    {
-      name = "vault",
-      path = "~/vault"
-    }
-  },
-  templates = {
-    folder = "5.templates"
-  }
+	completion = {
+		blink = true,
+	},
+	workspaces = {
+		{
+			name = "vault",
+			path = vim.fn.expand("~/vault"),
+		},
+	},
+	templates = {
+		folder = "5.templates",
+	},
 })
