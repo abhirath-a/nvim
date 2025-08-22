@@ -8,6 +8,7 @@ require("obsidian").setup({
 			path = vim.fn.expand("~/vault"),
 		},
 	},
+	legacy_commands = false,
 	templates = {
 		folder = "5.templates",
 	},
