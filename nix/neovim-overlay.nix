@@ -42,9 +42,9 @@ let
     obsidian-nvim
     oil-nvim
     refactoring-nvim
-    vim-surround
     undotree
     plenary-nvim
+    vim-surround
     kanagawa-nvim
   ];
   extraPackages = with pkgs; [
