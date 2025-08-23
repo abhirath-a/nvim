@@ -109,6 +109,9 @@ let
           cp -r after $out/after
           rm -r after
       fi
+      if [ ! -z "$(ls -A)" ]; then
+        cp -r -- * $out/nvim
+      fi
     '';
   };
 
