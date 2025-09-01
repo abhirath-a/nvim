@@ -1,2 +1,2 @@
-require("kanagawa").setup({ transparent = true })
-vim.cmd.colorscheme("kanagawa")
+require("kanso").setup({ transparent = true })
+vim.cmd.colorscheme("kanso-zen")

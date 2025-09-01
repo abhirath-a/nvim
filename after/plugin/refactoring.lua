@@ -1,4 +1,4 @@
-require("refactoring").setup()
+require("refactoring").setup({ show_success_message = true })
 vim.keymap.set({ "n", "x" }, "<leader>re", function()
 	return require("refactoring").refactor("Extract Function")
 end, { expr = true })

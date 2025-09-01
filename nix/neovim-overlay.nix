@@ -4,40 +4,30 @@ with final.pkgs.lib;
 let
   pkgs = final;
 
-  mkNvimPlugin =
-    src: pname:
-    pkgs.vimUtils.buildVimPlugin {
-      inherit pname src;
-      version = src.lastModifiedDate;
-    };
-
+  # mkNvimPlugin =
+  #   src: pname:
+  #   pkgs.vimUtils.buildVimPlugin {
+  #     inherit pname src;
+  #     version = src.lastModifiedDate;
+  #   };
+  #
   pkgs-locked = inputs.nixpkgs.legacyPackages.${pkgs.system};
 
   mkNeovim = pkgs.callPackage ./mkNeovim.nix {
+    neovim-nightly = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
     inherit (pkgs-locked) wrapNeovimUnstable neovimUtils;
   };
-
   all-plugins = with pkgs.vimPlugins; [
-    # treesitter
     nvim-treesitter.withAllGrammars
     ts-autotag-nvim
-    # mini
     mini-nvim
-    # cmp
     blink-cmp
     friendly-snippets
-    copilot-lua
-    blink-cmp-copilot
-    # formatting
     conform-nvim
-    # linting
     nvim-lint
-    # minimal notification ui
     fidget-nvim
-    # git
     vim-fugitive
     gitsigns-nvim
-
     harpoon2
     obsidian-nvim
     oil-nvim
@@ -45,7 +35,7 @@ let
     undotree
     plenary-nvim
     vim-surround
-    kanagawa-nvim
+    kanso-nvim
   ];
   extraPackages = with pkgs; [
     lua-language-server
@@ -54,6 +44,8 @@ let
     ruff
     basedpyright
     vtsls
+    ripgrep
+    copilot-language-server-fhs
   ];
 in
 {

@@ -1,7 +1,5 @@
 require("obsidian").setup({
-	completion = {
-		blink = true,
-	},
+	completion = { blink = true },
 	workspaces = {
 		{
 			name = "vault",
@@ -9,7 +7,5 @@ require("obsidian").setup({
 		},
 	},
 	legacy_commands = false,
-	templates = {
-		folder = "5.templates",
-	},
+	templates = { folder = "5.templates" },
 })

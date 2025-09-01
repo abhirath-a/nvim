@@ -57,6 +57,30 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end, { buffer = event.buf })
 		vim.keymap.set({ "n", "x" }, "<F3>", vim.lsp.buf.format, { buffer = event.buf })
 		vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = event.buf })
+    local client = vim.lsp.get_client_by_id(event.data.client_id)
+    if client:supports_method(vim.lsp.protocol.Methods.textDocument_inlineCompletion) then
+        vim.lsp.inline_completion.enable(true)
+        vim.keymap.set("i", "<Tab>",
+          function()
+            if not vim.lsp.inline_completion.get() then
+              return "<Tab>"
+            end
+          end,
+          { expr = true, replace_keycodes = true, desc = "Apply the currently displayed completion suggestion" }
+        )
+        vim.keymap.set("i", "<M-n>",
+          function()
+            vim.lsp.inline_completion.select({})
+          end,
+          { desc = "Show next inline completion suggestion", }
+        )
+        vim.keymap.set("i", "<M-p>",
+          function()
+            vim.lsp.inline_completion.select({ count = -1 })
+          end,
+          { desc = "Show previous inline completion suggestion", }
+        )
+    end
 	end,
 })
-vim.lsp.enable({ "lua_ls", "gopls", "nil_ls", "basedpyright", "vtsls" })
+vim.lsp.enable({ "lua_ls", "gopls", "nil_ls", "basedpyright", "vtsls", "copilot" })

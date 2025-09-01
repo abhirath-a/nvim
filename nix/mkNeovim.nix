@@ -8,6 +8,7 @@
   # Set by the overlay to ensure we use a compatible version of `wrapNeovimUnstable`
   wrapNeovimUnstable,
   neovimUtils,
+  neovim-nightly
 }:
 with lib;
 {
@@ -188,7 +189,7 @@ let
       }"'';
 
   # wrapNeovimUnstable is the nixpkgs utility function for building a Neovim derivation.
-  neovim-wrapped = wrapNeovimUnstable neovim-unwrapped (
+  neovim-wrapped = wrapNeovimUnstable neovim-nightly (
     neovimConfig
     // {
       luaRcContent = initLua;
