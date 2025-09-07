@@ -3,4 +3,3 @@ vim.api.nvim_create_autocmd("FileType", {
 		pcall(vim.treesitter.start, ev.buf)
 	end,
 })
-require("ts-autotag").setup()

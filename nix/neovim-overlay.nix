@@ -19,7 +19,6 @@ let
   };
   all-plugins = with pkgs.vimPlugins; [
     nvim-treesitter.withAllGrammars
-    ts-autotag-nvim
     mini-nvim
     blink-cmp
     friendly-snippets
@@ -34,7 +33,6 @@ let
     refactoring-nvim
     undotree
     plenary-nvim
-    vim-surround
     kanso-nvim
   ];
   extraPackages = with pkgs; [

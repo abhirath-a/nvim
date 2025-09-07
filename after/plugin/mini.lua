@@ -1,6 +1,5 @@
 require("mini.icons").setup()
 require("mini.extra").setup()
-require("mini.ai").setup()
 require("mini.pick").setup()
 vim.ui.select = require("mini.pick").ui_select
 vim.keymap.set("n", "<C-p>", "<cmd>Pick files<CR>")
