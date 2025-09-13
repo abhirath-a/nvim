@@ -19,7 +19,7 @@ let
   };
   all-plugins = with pkgs.vimPlugins; [
     nvim-treesitter.withAllGrammars
-    mini-nvim
+    mini-pick
     blink-cmp
     friendly-snippets
     conform-nvim
@@ -29,7 +29,6 @@ let
     gitsigns-nvim
     harpoon2
     obsidian-nvim
-    oil-nvim
     refactoring-nvim
     undotree
     plenary-nvim

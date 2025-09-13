@@ -18,13 +18,15 @@ vim.o.incsearch = true
 vim.o.termguicolors = true
 vim.o.scrolloff = 8
 vim.o.signcolumn = "yes"
-vim.o.updatetime = 50
+vim.g.netrw_browse_split = 0
+vim.g.netrw_banner = 0
+vim.g.netrw_winsize = 25
 vim.diagnostic.config({ virtual_text = true })
 -- remap
-vim.keymap.set("n", "<c-k>", ":wincmd k<CR>")
-vim.keymap.set("n", "<c-j>", ":wincmd j<CR>")
-vim.keymap.set("n", "<c-h>", ":wincmd h<CR>")
-vim.keymap.set("n", "<c-l>", ":wincmd l<CR>")
+vim.keymap.set("n", "<c-k>", "<cmd>wincmd k<CR>")
+vim.keymap.set("n", "<c-j>", "<cmd>wincmd j<CR>")
+vim.keymap.set("n", "<c-h>", "<cmd>wincmd h<CR>")
+vim.keymap.set("n", "<c-l>", "<cmd>wincmd l<CR>")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "J", "mzJ`z")
@@ -39,6 +41,7 @@ vim.keymap.set({ "n", "v" }, "<leader>d", '"_d')
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+vim.keymap.set("n", "<C-n>", vim.cmd.Ex)
 -- lsp
 vim.api.nvim_create_autocmd("LspAttach", {
 	desc = "LSP actions",
