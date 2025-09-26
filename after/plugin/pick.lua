@@ -1,5 +1,4 @@
 local pick = require("mini.pick")
--- turns off icons
 pick.setup({ source = { show = pick.default_show } })
 
 vim.ui.select = pick.ui_select

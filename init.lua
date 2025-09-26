@@ -18,10 +18,13 @@ vim.o.incsearch = true
 vim.o.termguicolors = true
 vim.o.scrolloff = 8
 vim.o.signcolumn = "yes"
+vim.o.winborder = "rounded"
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
 vim.diagnostic.config({ virtual_text = true })
+vim.g.vimwiki_list = { { path = "~/vault/", syntax = "markdown", ext = "md" } }
+vim.g.vimwiki_global_ext = 0
 -- remap
 vim.keymap.set("n", "<c-k>", "<cmd>wincmd k<CR>")
 vim.keymap.set("n", "<c-j>", "<cmd>wincmd j<CR>")
@@ -41,7 +44,7 @@ vim.keymap.set({ "n", "v" }, "<leader>d", '"_d')
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
-vim.keymap.set("n", "<C-n>", vim.cmd.Ex)
+vim.keymap.set("n", "<c-n>", vim.cmd.Ex)
 -- lsp
 vim.api.nvim_create_autocmd("LspAttach", {
 	desc = "LSP actions",
@@ -49,7 +52,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = event.buf })
 		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = event.buf })
 		vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, { buffer = event.buf })
-		vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = event.buf })
 		if
 			vim.lsp
 				.get_client_by_id(event.data.client_id)

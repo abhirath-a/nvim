@@ -29,7 +29,7 @@
             neovim-overlay
             inputs.gen-luarc.overlays.default
           ];
-          config.allowUnfree = true; # <-- enable unfree packages here
+          config.allowUnfree = true;
         };
         shell = pkgs.mkShell {
           name = "nvim-devShell";

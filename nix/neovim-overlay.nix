@@ -3,14 +3,6 @@ final: prev:
 with final.pkgs.lib;
 let
   pkgs = final;
-
-  # mkNvimPlugin =
-  #   src: pname:
-  #   pkgs.vimUtils.buildVimPlugin {
-  #     inherit pname src;
-  #     version = src.lastModifiedDate;
-  #   };
-  #
   pkgs-locked = inputs.nixpkgs.legacyPackages.${pkgs.system};
 
   mkNeovim = pkgs.callPackage ./mkNeovim.nix {
@@ -26,10 +18,8 @@ let
     nvim-lint
     fidget-nvim
     vim-fugitive
-    gitsigns-nvim
     harpoon2
-    obsidian-nvim
-    refactoring-nvim
+    vimwiki
     undotree
     plenary-nvim
     kanso-nvim
@@ -42,7 +32,7 @@ let
     basedpyright
     vtsls
     ripgrep
-    copilot-language-server-fhs
+    copilot-language-server
   ];
 in
 {
