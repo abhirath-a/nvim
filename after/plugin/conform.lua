@@ -1,4 +1,6 @@
-require("conform").setup({
+local conform = require("conform")
+
+conform.setup({
 	formatters_by_ft = {
 		astro = { "prettier" },
 		javascript = { "prettier" },
@@ -26,7 +28,7 @@ require("conform").setup({
 })
 
 vim.keymap.set({ "n", "v" }, "<leader>gf", function()
-	require("conform").format({
+	conform.format({
 		lsp_fallback = true,
 		async = true,
 		timeout_ms = 500,

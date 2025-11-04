@@ -13,15 +13,12 @@ let
     nvim-treesitter.withAllGrammars
     mini-pick
     blink-cmp
-    friendly-snippets
     conform-nvim
     nvim-lint
     fidget-nvim
     vim-fugitive
-    harpoon2
     vimwiki
     undotree
-    plenary-nvim
     kanso-nvim
   ];
   extraPackages = with pkgs; [
@@ -32,7 +29,6 @@ let
     basedpyright
     vtsls
     ripgrep
-    copilot-language-server
   ];
 in
 {
