@@ -47,7 +47,7 @@ vim.keymap.set({ "n", "v" }, "<leader>d", '"_d')
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>gs", "<cmd>Git<CR>")
 vim.keymap.set("n", "<leader>u", "<cmd>UndotreeToggle<CR>")
-vim.keymap.set("n", "<c-n>", "<cmd>Ex<CR>")
+vim.keymap.set("n", "<leader>e", "<cmd>Ex<CR>")
 vim.keymap.set("n", "<leader>a", function()
 	vim.cmd("$argadd %")
 	vim.cmd("argdedup")
@@ -76,7 +76,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, { buffer = event.buf })
 	end,
 })
-vim.lsp.enable({ "lua_ls", "gopls", "nil_ls", "basedpyright", "vtsls" })
+vim.lsp.enable({ "lua_ls", "gopls", "nil_ls", "basedpyright", "vtsls", "rust_analyzer" })
 
 -- turn off right click menu
 vim.cmd.aunmenu("PopUp")

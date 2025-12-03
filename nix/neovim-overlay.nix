@@ -3,10 +3,10 @@ final: prev:
 with final.pkgs.lib;
 let
   pkgs = final;
-  pkgs-locked = inputs.nixpkgs.legacyPackages.${pkgs.system};
+  pkgs-locked = inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
 
   mkNeovim = pkgs.callPackage ./mkNeovim.nix {
-    neovim-nightly = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
+    neovim-nightly = inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.default;
     inherit (pkgs-locked) wrapNeovimUnstable neovimUtils;
   };
   all-plugins = with pkgs.vimPlugins; [
@@ -29,6 +29,7 @@ let
     basedpyright
     vtsls
     ripgrep
+    rust-analyzer
   ];
 in
 {
