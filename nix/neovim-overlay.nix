@@ -11,17 +11,17 @@ let
   };
   all-plugins = with pkgs.vimPlugins; [
     nvim-treesitter.withAllGrammars
-    mini-pick
+    fzf-lua
     blink-cmp
     conform-nvim
     nvim-lint
     fidget-nvim
     vim-fugitive
-    vimwiki
-    undotree
     kanso-nvim
   ];
   extraPackages = with pkgs; [
+    fzf
+    fd
     lua-language-server
     nil
     gopls
@@ -30,6 +30,7 @@ let
     vtsls
     ripgrep
     rust-analyzer
+    marksman
   ];
 in
 {

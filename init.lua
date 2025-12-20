@@ -24,10 +24,6 @@ vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
 
--- vimwiki settings
-vim.g.vimwiki_list = { { path = "~/vault/", syntax = "markdown", ext = "md" } }
-vim.g.vimwiki_global_ext = 0
-
 -- keymaps
 vim.keymap.set("n", "<c-k>", "<cmd>wincmd k<CR>")
 vim.keymap.set("n", "<c-j>", "<cmd>wincmd j<CR>")
@@ -46,7 +42,6 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 vim.keymap.set({ "n", "v" }, "<leader>d", '"_d')
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>gs", "<cmd>Git<CR>")
-vim.keymap.set("n", "<leader>u", "<cmd>UndotreeToggle<CR>")
 vim.keymap.set("n", "<leader>e", "<cmd>Ex<CR>")
 vim.keymap.set("n", "<leader>a", function()
 	vim.cmd("$argadd %")
@@ -76,10 +71,4 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, { buffer = event.buf })
 	end,
 })
-vim.lsp.enable({ "lua_ls", "gopls", "nil_ls", "basedpyright", "vtsls", "rust_analyzer" })
-
--- turn off right click menu
-vim.cmd.aunmenu("PopUp")
-pcall(function()
-	vim.api.nvim_clear_autocmds({ group = "nvim.popupmenu" })
-end)
+vim.lsp.enable({ "lua_ls", "gopls", "nil_ls", "basedpyright", "vtsls", "rust_analyzer", "marksman" })
