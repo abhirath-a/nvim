@@ -2,18 +2,6 @@ local conform = require("conform")
 
 conform.setup({
 	formatters_by_ft = {
-		astro = { "biome" },
-		javascript = { "biome" },
-		typescript = { "biome" },
-		javascriptreact = { "biome" },
-		typescriptreact = { "biome" },
-		svelte = { "biome" },
-		css = { "biome" },
-		html = { "biome" },
-		json = { "biome" },
-		yaml = { "biome" },
-		markdown = { "biome" },
-		graphql = { "biome" },
 		lua = { "stylua" },
 		java = { "google-java-format" },
 		ruby = { "rubocop" },

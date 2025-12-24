@@ -71,4 +71,4 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, { buffer = event.buf })
 	end,
 })
-vim.lsp.enable({ "lua_ls", "gopls", "nil_ls", "basedpyright", "vtsls", "rust_analyzer", "marksman", "astro" })
+vim.lsp.enable({ "lua_ls", "gopls", "nil_ls", "basedpyright", "vtsls", "rust_analyzer", "marksman", "astro", "biome" })
