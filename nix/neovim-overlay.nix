@@ -31,6 +31,7 @@ let
     ripgrep
     rust-analyzer
     marksman
+    astro-language-server
   ];
 in
 {
