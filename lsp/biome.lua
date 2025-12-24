@@ -29,7 +29,7 @@ function root_markers_with_field(root_files, new_names, field, fname)
 end
 
 function insert_package_json(root_files, field, fname)
-	return M.root_markers_with_field(root_files, { "package.json", "package.json5" }, field, fname)
+	return root_markers_with_field(root_files, { "package.json", "package.json5" }, field, fname)
 end
 
 ---@type vim.lsp.Config
@@ -80,7 +80,7 @@ return {
 		-- in its directory tree.
 		local filename = vim.api.nvim_buf_get_name(bufnr)
 		local biome_config_files = { "biome.json", "biome.jsonc" }
-		biome_config_files = util.insert_package_json(biome_config_files, "biome", filename)
+		biome_config_files = insert_package_json(biome_config_files, "biome", filename)
 		local is_buffer_using_biome = vim.fs.find(biome_config_files, {
 			path = filename,
 			type = "file",
